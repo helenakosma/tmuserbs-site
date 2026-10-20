@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gallery | TMU Serbian Student Association</title>
+  <meta name="description" content="The Serbian Student Association at Toronto Metropolitan University.">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html"><img src="images/logo.png" alt="TMU Serbian Student Association" class="logo"></a>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="events.html" aria-current="page">Events</a>
+        <a href="team.html">Team</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+  <div class="stripe" aria-hidden="true"><span></span><span></span><span></span></div>
+
+  <main>
+    <div class="wrap">
+      <a href="events.html" class="back">&larr; All events</a>
+      <p class="kicker">Gallery</p>
+      <h1 id="gallery-title">Gallery</h1>
+      <p class="lead" id="gallery-meta"></p>
+      <div id="gallery" class="gallery"></div>
+    </div>
+  </main>
+
+  <dialog id="viewer" class="viewer" aria-label="Photo viewer">
+    <img src="" alt="">
+    <button class="prev" aria-label="Previous photo">&lsaquo;</button>
+    <button class="next" aria-label="Next photo">&rsaquo;</button>
+    <button class="close" aria-label="Close">&times;</button>
+    <p class="counter"></p>
+  </dialog>
+
+  <footer>
+    <div class="wrap">
+      <span>&copy; <span id="year"></span> TMU Serbian Student Association</span>
+      <a href="https://instagram.com/tmuserbs" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
