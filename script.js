@@ -1,6 +1,6 @@
 // ---------- Edit your content here ----------
 
-// Date format is "YYYY-MM-DD". Past events are greyed out automatically.
+// Date format is "YYYY-MM-DD". Past events move to "Past events" automatically.
 const events = [
   { date: "2026-10-30", title: "Welcome Social", description: "Meet the club and kick off the year." },
   { date: "2026-11-14", title: "Kolo Night", description: "Learn the basics of kolo. No experience needed." },
@@ -27,22 +27,55 @@ function escapeHtml(str) {
 const today = new Date();
 today.setHours(0, 0, 0, 0);
 
-document.getElementById("event-list").innerHTML = [...events]
-  .sort((a, b) => a.date.localeCompare(b.date))
+const sortedEvents = events
   .map((e) => {
     const [y, m, d] = e.date.split("-").map(Number);
-    const date = new Date(y, m - 1, d);
-    const label = date.toLocaleDateString("en-CA", { weekday: "short", month: "long", day: "numeric" });
-    return `<li${date < today ? ' class="past"' : ""}>
-      <span class="date">${label}</span> · <strong>${escapeHtml(e.title)}</strong>
-      <p>${escapeHtml(e.description)}</p>
-    </li>`;
+    return { ...e, when: new Date(y, m - 1, d) };
   })
-  .join("");
+  .sort((a, b) => a.when - b.when);
+const upcoming = sortedEvents.filter((e) => e.when >= today);
+const past = sortedEvents.filter((e) => e.when < today).reverse();
 
-document.getElementById("team-list").innerHTML = team
-  .map((p) => `<li><strong>${escapeHtml(p.name)}</strong> <span>· ${escapeHtml(p.role)}</span></li>`)
-  .join("");
+function dateBadge(when) {
+  const month = when.toLocaleDateString("en-CA", { month: "short" });
+  return `<div class="date"><span class="m">${month}</span><span class="d">${when.getDate()}</span></div>`;
+}
 
-document.getElementById("signup-link").href = signupUrl;
+function eventItem(e) {
+  return `${dateBadge(e.when)}
+    <div>
+      <h3>${escapeHtml(e.title)}</h3>
+      <p>${escapeHtml(e.description)}</p>
+    </div>`;
+}
+
+// Home page: next event
+const nextEvent = document.getElementById("next-event");
+if (nextEvent) {
+  nextEvent.innerHTML = upcoming.length
+    ? `<a href="events.html" class="next-event">${eventItem(upcoming[0])}</a>`
+    : `<p class="muted">No upcoming events right now. Check back soon.</p>`;
+}
+
+// Events page
+const upcomingList = document.getElementById("upcoming");
+if (upcomingList) {
+  upcomingList.innerHTML = upcoming.length
+    ? upcoming.map((e) => `<li>${eventItem(e)}</li>`).join("")
+    : `<li><p class="muted">No upcoming events right now. Check back soon.</p></li>`;
+  if (past.length) {
+    document.getElementById("past-heading").hidden = false;
+    document.getElementById("past").innerHTML = past.map((e) => `<li class="past">${eventItem(e)}</li>`).join("");
+  }
+}
+
+// Team page
+const teamList = document.getElementById("team");
+if (teamList) {
+  teamList.innerHTML = team
+    .map((p) => `<li><p class="role">${escapeHtml(p.role)}</p><p class="name">${escapeHtml(p.name)}</p></li>`)
+    .join("");
+}
+
+document.querySelectorAll("[data-signup]").forEach((a) => (a.href = signupUrl));
 document.getElementById("year").textContent = new Date().getFullYear();
