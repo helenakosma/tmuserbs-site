@@ -4,119 +4,56 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>TMU Serbian Student Association</title>
-  <meta name="description" content="TMUSerbs is the Serbian students' association at Toronto Metropolitan University. Culture, community, and good times.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Unbounded:wght@600;800&display=swap" rel="stylesheet">
+  <meta name="description" content="The Serbian Student Association at Toronto Metropolitan University.">
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <header class="nav">
-    <a href="#top" class="logo" aria-label="TMU Serbian Student Association home">
-      <img src="images/logo.png" alt="TMU Serbian Student Association">
-    </a>
-    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-      <span></span><span></span>
-    </button>
-    <nav class="nav-links">
+  <header>
+    <a href="#"><img src="images/logo.png" alt="TMU Serbian Student Association" class="logo"></a>
+    <nav>
       <a href="#about">About</a>
       <a href="#events">Events</a>
       <a href="#team">Team</a>
-      <a href="#join" class="btn btn-small">Join us</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
 
-  <main id="top">
-
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-glow"></div>
-      <div class="hero-text">
-      <p class="eyebrow">Toronto Metropolitan University</p>
-      <h1>
-        <span class="cyrillic">Добродошли</span>
-        Serbian Students<br>at TMU
-      </h1>
-      <p class="lead">
-        Culture, community, and a home away from home. Whether you're Serbian,
-        part Serbian, or just here for the ćevapi, you're welcome.
+  <main>
+    <section id="about">
+      <h1>TMU Serbian Student Association</h1>
+      <p>
+        We're a student club at Toronto Metropolitan University for anyone interested
+        in Serbian culture. We run socials, cultural events and holiday celebrations
+        throughout the school year. Membership is free and open to all TMU students.
       </p>
-      <div class="hero-actions">
-        <a href="#join" class="btn">Become a member</a>
-        <a href="#events" class="btn btn-ghost">See events</a>
-      </div>
-      </div>
-      <div class="hero-logo">
-        <img src="images/logo.png" alt="TMU Serbian Student Association logo">
-      </div>
+      <p><a href="#" id="signup-link" class="button">Become a member</a></p>
     </section>
 
-    <div class="divider" aria-hidden="true"></div>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <p class="eyebrow">About us</p>
-      <h2>More than a club. A <em>porodica</em>.</h2>
-      <div class="about-grid">
-        <p class="about-text">
-          TMUSerbs brings together students who share a love of Serbian culture,
-          language, food, and music. We host socials, cultural nights, sports
-          tournaments, and collaborate with other Balkan and cultural clubs across Toronto.
-        </p>
-        <div class="pillars">
-          <div class="pillar">
-            <h3>Culture</h3>
-            <p>Celebrate traditions like Slava, Božić, and Vidovdan together.</p>
-          </div>
-          <div class="pillar">
-            <h3>Community</h3>
-            <p>Meet people who get it, from first-years to grad students.</p>
-          </div>
-          <div class="pillar">
-            <h3>Fun</h3>
-            <p>Kafana nights, kolo lessons, game watch parties, and more.</p>
-          </div>
-        </div>
-      </div>
+    <section id="events">
+      <h2>Events</h2>
+      <!-- Edit events in script.js -->
+      <ul id="event-list" class="events"></ul>
     </section>
 
-    <!-- EVENTS -->
-    <section id="events" class="section">
-      <p class="eyebrow">Events</p>
-      <h2>What's coming up</h2>
-      <!-- Events are listed in script.js so they're easy to edit -->
-      <div id="event-list" class="event-list"></div>
-      <p class="muted small">Follow us on Instagram for the latest updates.</p>
+    <section id="team">
+      <h2>Team</h2>
+      <!-- Edit team members in script.js -->
+      <ul id="team-list" class="team"></ul>
     </section>
 
-    <!-- TEAM -->
-    <section id="team" class="section">
-      <p class="eyebrow">Our team</p>
-      <h2>Meet the exec</h2>
-      <!-- Team members are listed in script.js -->
-      <div id="team-grid" class="team-grid"></div>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>
+        Instagram: <a href="https://instagram.com/tmuserbs" target="_blank" rel="noopener">@tmuserbs</a><br>
+        Email: <a href="mailto:tmuserbs@gmail.com">tmuserbs@gmail.com</a>
+      </p>
     </section>
-
-    <!-- JOIN -->
-    <section id="join" class="section join">
-      <div class="join-card">
-        <p class="eyebrow">Join / contact</p>
-        <h2>Ajde, join us!</h2>
-        <p>Membership is free and open to all TMU students. Sign up to get event updates, or reach out with questions.</p>
-        <div class="join-actions">
-          <a href="#" class="btn" id="signup-link">Sign up</a>
-          <a href="https://instagram.com/tmuserbs" class="btn btn-ghost" target="_blank" rel="noopener">Instagram</a>
-          <a href="mailto:tmuserbs@gmail.com" class="btn btn-ghost">Email us</a>
-        </div>
-      </div>
-    </section>
-
   </main>
 
-  <footer class="footer">
-    <p>© <span id="year"></span> TMU Serbian Student Association · Toronto Metropolitan University</p>
+  <footer>
+    © <span id="year"></span> TMU Serbian Student Association
   </footer>
 
   <script src="script.js"></script>
