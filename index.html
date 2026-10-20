@@ -8,7 +8,7 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Fira+Sans+Extra+Condensed:wght@600;800&family=IBM+Plex+Mono:wght@500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -25,26 +25,37 @@
     </div>
   </header>
   <div class="stripe" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track"><span lang="en">TMU Serbian Student Association</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="en">Follow @tmuserbs</span><i></i><span lang="en">TMU Serbian Student Association</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="en">Follow @tmuserbs</span><i></i><span lang="en">TMU Serbian Student Association</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="en">Follow @tmuserbs</span><i></i></div>
+  </div>
 
   <main>
     <div class="wrap">
+      <section class="hero">
+      <div class="hero-text">
       <p class="kicker">Toronto Metropolitan University</p>
       <h1>Serbian Student<br>Association</h1>
+      <p class="sub" lang="sr">Српско студентско удружење</p>
       <p class="lead">A club for TMU students who love Serbian culture. Socials, cultural nights and holiday celebrations all year. Free to join, open to everyone.</p>
       <div class="buttons">
         <a href="#" class="button" data-signup>Become a member</a>
         <a href="https://discord.gg/zFcSjgYRs" class="button outline" target="_blank" rel="noopener">Join our Discord</a>
         <a href="about.html#membership" class="button outline">Why join?</a>
       </div>
+      </div>
+      <!-- Replace with a club photo, e.g. images/hero.jpg -->
+      <img class="hero-photo" src="images/placeholder/hero.jpg" alt="TMU Serbian Student Association members">
+      </section>
 
       <div class="block">
-        <p class="kicker">Next event</p>
+        <p class="kicker">Next event <span>/ Следећи догађај</span></p>
         <div id="next-event"></div>
         <p><a href="events.html">All events &rarr;</a></p>
       </div>
     </div>
   </main>
 
+  <div class="wordmark" aria-hidden="true">TMU SERBS</div>
   <footer>
     <div class="wrap">
       <span>&copy; <span id="year"></span> TMU Serbian Student Association</span>
