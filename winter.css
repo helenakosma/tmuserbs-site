@@ -1,0 +1,55 @@
+/* =========================================================
+   Winter theme
+   Loaded after styles.css. Delete this file's <link> (and
+   snow.js) from the pages to go back to the normal theme.
+   ========================================================= */
+:root {
+  --bg: #060b14;
+  --panel: #0d1626;
+  --line: #1b2840;
+  --muted: #8fa0b8;
+  --gold: #a9d8ff; /* gold accents become ice blue */
+  --ice: #a9d8ff;
+  --snow: #f4f8fc;
+}
+
+/* Cold night-sky background */
+body {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(18, 63, 122, 0.35), transparent 70%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Ticker turns navy so the coat of arms' red shield stands out */
+.ticker { background: var(--navy); position: relative; }
+
+/* Snow drift hanging under the ticker */
+.snowdrift {
+  height: 14px;
+  background:
+    radial-gradient(circle at 12px 0, var(--snow) 9px, transparent 10px) 0 0 / 24px 14px repeat-x,
+    radial-gradient(circle at 6px 0, var(--snow) 5px, transparent 6px) 9px 0 / 17px 10px repeat-x;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* Frosty edges */
+.hero-photo { border-bottom-color: var(--ice); }
+.next-event, .perks li { border-left-color: var(--ice); }
+.team li { border-top-color: var(--ice); }
+.kicker { color: var(--ice); }
+
+/* Footer wordmark lights up icy instead of red */
+.wordmark { -webkit-text-stroke-color: #1f3150; }
+.wordmark:hover { color: var(--ice); -webkit-text-stroke-color: var(--ice); }
+
+/* Falling snow */
+#snow {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 50;
+}
