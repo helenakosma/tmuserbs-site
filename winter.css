@@ -6,29 +6,25 @@
 :root {
   --bg: #060b14;
   --panel: #0d1626;
-  --line: #1b2840;
+  --panel-2: #111d31;
+  --line: rgba(169, 216, 255, 0.1);
   --muted: #8fa0b8;
   --gold: #a9d8ff; /* gold accents become ice blue */
   --ice: #a9d8ff;
   --snow: #f4f8fc;
 }
 
-/* Cold night-sky background */
+/* Cold night-sky glow at the top of the page */
 body {
   background:
     radial-gradient(ellipse 80% 50% at 50% -10%, rgba(18, 63, 122, 0.35), transparent 70%),
     var(--bg);
-  background-attachment: fixed;
 }
 
-/* Ticker turns navy so the coat of arms' red shield stands out */
-.ticker { background: var(--navy); position: relative; }
+.nav { background: rgba(8, 14, 26, 0.62); }
+.wordmark { background-image: linear-gradient(180deg, rgba(169, 216, 255, 0.2), rgba(169, 216, 255, 0.01) 85%); }
 
-.kicker { color: var(--ice); }
-.next-event:hover, .perks li:hover, .team li:hover { border-color: #2c4266; }
-.wordmark { -webkit-text-stroke-color: #1f3150; }
-
-/* Falling snow */
+/* Falling snow (sits under the nav) */
 #snow {
   position: fixed;
   inset: 0;

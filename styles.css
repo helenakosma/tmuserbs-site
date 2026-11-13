@@ -36,6 +36,7 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
+@supports not (overflow: clip) { body { overflow-x: hidden; } }
 img { max-width: 100%; }
 a { color: inherit; }
 ::selection { background: var(--red); color: #fff; }
@@ -221,7 +222,7 @@ p { margin: 0 0 1em; }
 @keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Sections ---------- */
-.section { padding: clamp(80px, 10vw, 140px) 0; }
+.section { padding-top: clamp(80px, 10vw, 140px); padding-bottom: clamp(80px, 10vw, 140px); }
 .section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; margin-bottom: 48px; }
 .section-head h2 { max-width: 900px; }
 
