@@ -18,7 +18,7 @@
     canvas.height = height * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     // Fewer flakes on small screens
-    const count = Math.round(Math.min(140, (width * height) / 12000));
+    const count = Math.round(Math.min(90, (width * height) / 18000));
     flakes = Array.from({ length: count }, () => makeFlake(true));
   }
 
@@ -27,7 +27,7 @@
       x: Math.random() * width,
       y: anywhere ? Math.random() * height : -10,
       r: 0.8 + Math.random() * 2.2,
-      speed: 0.3 + Math.random() * 0.9,
+      speed: 0.2 + Math.random() * 0.5,
       drift: Math.random() * Math.PI * 2,
       opacity: 0.35 + Math.random() * 0.55,
     };

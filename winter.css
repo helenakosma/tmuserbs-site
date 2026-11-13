@@ -24,25 +24,9 @@ body {
 /* Ticker turns navy so the coat of arms' red shield stands out */
 .ticker { background: var(--navy); position: relative; }
 
-/* Snow drift hanging under the ticker */
-.snowdrift {
-  height: 14px;
-  background:
-    radial-gradient(circle at 12px 0, var(--snow) 9px, transparent 10px) 0 0 / 24px 14px repeat-x,
-    radial-gradient(circle at 6px 0, var(--snow) 5px, transparent 6px) 9px 0 / 17px 10px repeat-x;
-  opacity: 0.9;
-  pointer-events: none;
-}
-
-/* Frosty edges */
-.hero-photo { border-bottom-color: var(--ice); }
-.next-event, .perks li { border-left-color: var(--ice); }
-.team li { border-top-color: var(--ice); }
 .kicker { color: var(--ice); }
-
-/* Footer wordmark lights up icy instead of red */
+.next-event:hover, .perks li:hover, .team li:hover { border-color: #2c4266; }
 .wordmark { -webkit-text-stroke-color: #1f3150; }
-.wordmark:hover { color: var(--ice); -webkit-text-stroke-color: var(--ice); }
 
 /* Falling snow */
 #snow {

@@ -332,7 +332,7 @@ footer a { color: var(--muted); }
   aspect-ratio: 4 / 5;
   object-fit: cover;
   background: var(--panel);
-  border-bottom: 6px solid var(--red);
+  border-radius: 10px;
 }
 
 /* Bilingual kicker */
@@ -341,46 +341,24 @@ footer a { color: var(--muted); }
 /* Bigger page titles */
 h1 { line-height: 0.95; }
 
-/* Buttons: hard offset shadow on hover */
-.button { transition: transform 0.15s, box-shadow 0.15s, background 0.15s, border-color 0.15s; }
-.button:hover { transform: translate(-3px, -3px); box-shadow: 3px 3px 0 var(--gold); }
-.button.outline:hover { box-shadow: 3px 3px 0 var(--red); }
+/* ---------- Softer, calmer finish ---------- */
+.button { border-radius: 4px; transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease; }
+.button.outline:hover { background: rgba(255, 255, 255, 0.06); }
 
-/* Events: row lights up on hover, thumbnails go from b/w to colour */
-.events li.event-card { padding-left: 12px; padding-right: 12px; margin: 0 -12px; transition: background 0.2s; }
-.events li.event-card:hover { background: #111; }
-.events li.event-card .thumb { filter: grayscale(1) contrast(1.1); transition: filter 0.3s, transform 0.3s; }
-.events li.event-card:hover .thumb { filter: none; }
-.events li.event-card h3 { font-size: 1.6rem; }
-.gallery-link { transition: color 0.15s, letter-spacing 0.2s; }
-.event-card:hover .gallery-link { letter-spacing: 0.12em; }
-
-/* Home next event */
-.next-event { transition: transform 0.15s, box-shadow 0.15s; }
-.next-event:hover { transform: translate(-3px, -3px); box-shadow: 4px 4px 0 var(--red); }
-
-/* Team: numbered cards */
-.team { counter-reset: member; }
-.team li { position: relative; overflow: hidden; counter-increment: member; transition: transform 0.15s, box-shadow 0.15s; }
-.team li::after {
-  content: counter(member, decimal-leading-zero);
-  position: absolute;
-  right: 12px;
-  bottom: -18px;
-  font-family: "Big Shoulders Display", sans-serif;
-  font-weight: 800;
-  font-size: 5.5rem;
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px #333;
+/* Cards: thin borders, gentle corners, no coloured accent bars */
+.next-event, .perks li, .team li {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  transition: border-color 0.25s ease, background 0.25s ease;
 }
-.team li:hover { transform: translate(-3px, -3px); box-shadow: 4px 4px 0 var(--gold); }
+.next-event:hover, .perks li:hover, .team li:hover { border-color: #3a3a3a; }
 
-/* Perks + contact rows */
-.perks li { transition: transform 0.15s, box-shadow 0.15s; }
-.perks li:hover { transform: translate(-3px, -3px); box-shadow: 4px 4px 0 var(--gold); }
-.contact li { transition: padding-left 0.2s; }
-.contact li:hover { padding-left: 12px; }
+/* Events */
+.events li.event-card h3 { font-size: 1.6rem; }
+.thumb-link, .photo { border-radius: 6px; }
+.thumb, .photo img { transition: transform 0.5s ease, opacity 0.3s ease; }
+.gallery-link { transition: color 0.25s ease; }
+
 .contact a { font-size: 1.15rem; }
 
 /* Huge footer wordmark */
@@ -396,9 +374,7 @@ h1 { line-height: 0.95; }
   -webkit-text-stroke: 1px #2a2a2a;
   padding-top: 24px;
   user-select: none;
-  transition: color 0.4s;
 }
-.wordmark:hover { color: var(--red); -webkit-text-stroke-color: var(--red); }
 
 @media (max-width: 760px) {
   .hero { grid-template-columns: 1fr; gap: 32px; min-height: 0; }
