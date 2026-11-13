@@ -196,7 +196,14 @@ if (gallery) {
 const teamList = document.getElementById("team");
 if (teamList) {
   teamList.innerHTML = team
-    .map((p) => `<li><p class="role">${escapeHtml(p.role)}</p><p class="name">${escapeHtml(p.name)}</p></li>`)
+    .map((p) => {
+      const initials = p.name.split(/\s+/).map((w) => w[0] || "").join("").slice(0, 2).toUpperCase();
+      // Add photo: "images/team/name.jpg" to a member to show their picture instead of initials
+      const avatar = p.photo
+        ? `<img class="avatar" src="${escapeHtml(p.photo)}" alt="">`
+        : `<span class="avatar">${escapeHtml(initials)}</span>`;
+      return `<li>${avatar}<p class="role">${escapeHtml(p.role)}</p><p class="name">${escapeHtml(p.name)}</p></li>`;
+    })
     .join("");
 }
 
