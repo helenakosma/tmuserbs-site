@@ -55,6 +55,7 @@ const events = [
   },
 ];
 
+// Add photo: "images/team/name.jpg" to show a picture instead of initials.
 const team = [
   { name: "Your Name", role: "President" },
   { name: "Your Name", role: "Vice President" },
@@ -85,56 +86,42 @@ const past = sortedEvents.filter((e) => e.when < today).reverse();
 
 const galleryUrl = (e) => `gallery.html?event=${encodeURIComponent(e.id)}`;
 
-function dateBadge(when) {
-  const month = when.toLocaleDateString("en-CA", { month: "short" });
-  return `<div class="date"><span class="m">${month}</span><span class="d">${when.getDate()}</span></div>`;
-}
-
-function thumb(e) {
-  const src = e.thumbnail || e.photos[0];
-  return src
-    ? `<img class="thumb" src="${escapeHtml(src)}" alt="" loading="lazy">`
-    : `<div class="thumb thumb-empty">${dateBadge(e.when)}</div>`;
-}
-
-function eventItem(e) {
-  return `${dateBadge(e.when)}
-    <div>
+// Event card (home carousel + events page)
+function eventCard(e) {
+  const isPast = e.when < today;
+  const src = e.thumbnail || e.photos[0] || "images/placeholder/photo-1.jpg";
+  const month = e.when.toLocaleDateString("en-CA", { month: "short" }).replace(".", "");
+  const weekday = e.when.toLocaleDateString("en-CA", { weekday: "long" });
+  const more = isPast
+    ? `View gallery${e.photos.length ? ` (${e.photos.length})` : ""} <span aria-hidden="true">→</span>`
+    : `Details <span aria-hidden="true">→</span>`;
+  return `<a href="${galleryUrl(e)}" class="ecard${isPast ? " past" : ""}" data-reveal>
+      <img src="${escapeHtml(src)}" alt="" loading="lazy">
+      <span class="ecard-date"><b>${e.when.getDate()}</b><small>${month}</small></span>
+      <p class="ecard-meta">${isPast ? e.when.getFullYear() : weekday}</p>
       <h3>${escapeHtml(e.title)}</h3>
       <p>${escapeHtml(e.description)}</p>
-    </div>`;
+      <span class="ecard-more">${more}</span>
+    </a>`;
 }
+const noEvents = `<p class="empty">No upcoming events right now. Follow <a href="https://instagram.com/tmuserbs" target="_blank" rel="noopener">@tmuserbs</a> so you don't miss the next one.</p>`;
 
-// Home page: next event
-const nextEvent = document.getElementById("next-event");
-if (nextEvent) {
-  nextEvent.innerHTML = upcoming.length
-    ? `<a href="events.html" class="next-event">${eventItem(upcoming[0])}</a>`
-    : `<p class="muted">No upcoming events right now. Check back soon.</p>`;
+// Home: upcoming events carousel
+const rail = document.getElementById("event-rail");
+if (rail) {
+  if (upcoming.length) {
+    rail.innerHTML = upcoming.slice(0, 8).map(eventCard).join("");
+  } else {
+    rail.outerHTML = `<div class="wrap">${noEvents}</div>`;
+  }
 }
 
 // Events page
-function eventCard(e) {
-  const longDate = e.when.toLocaleDateString("en-CA", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
-  const count = e.photos.length;
-  return `<li class="event-card${e.when < today ? " past" : ""}">
-      <a href="${galleryUrl(e)}" class="thumb-link" aria-label="${escapeHtml(e.title)} gallery">${thumb(e)}</a>
-      <div class="event-info">
-        <p class="event-date">${longDate}</p>
-        <h3>${escapeHtml(e.title)}</h3>
-        <p>${escapeHtml(e.description)}</p>
-        <a href="${galleryUrl(e)}" class="gallery-link">View gallery${count ? ` (${count})` : ""} &rarr;</a>
-      </div>
-    </li>`;
-}
-
 const upcomingList = document.getElementById("upcoming");
 if (upcomingList) {
-  upcomingList.innerHTML = upcoming.length
-    ? upcoming.map(eventCard).join("")
-    : `<li><p class="muted">No upcoming events right now. Check back soon.</p></li>`;
+  upcomingList.innerHTML = upcoming.length ? upcoming.map(eventCard).join("") : noEvents;
   if (past.length) {
-    document.getElementById("past-heading").hidden = false;
+    document.getElementById("past-section").hidden = false;
     document.getElementById("past").innerHTML = past.map(eventCard).join("");
   }
 }
@@ -156,7 +143,7 @@ if (gallery) {
     meta.textContent = e.when.toLocaleDateString("en-CA", { weekday: "long", month: "long", day: "numeric", year: "numeric" }) + " · " + e.description;
 
     if (!e.photos.length) {
-      gallery.outerHTML = `<p class="muted">${e.when >= today ? "Photos will be posted after the event." : "No photos yet. Check back soon."}</p>`;
+      gallery.outerHTML = `<p class="empty">${e.when >= today ? "Photos will be posted after the event." : "No photos yet. Check back soon."}</p>`;
     } else {
       gallery.innerHTML = e.photos
         .map((src, i) => `<button class="photo" data-index="${i}" aria-label="Open photo ${i + 1}"><img src="${escapeHtml(src)}" alt="${escapeHtml(e.title)} photo ${i + 1}" loading="lazy"></button>`)
@@ -196,16 +183,56 @@ if (gallery) {
 const teamList = document.getElementById("team");
 if (teamList) {
   teamList.innerHTML = team
-    .map((p) => {
+    .map((p, i) => {
       const initials = p.name.split(/\s+/).map((w) => w[0] || "").join("").slice(0, 2).toUpperCase();
-      // Add photo: "images/team/name.jpg" to a member to show their picture instead of initials
-      const avatar = p.photo
-        ? `<img class="avatar" src="${escapeHtml(p.photo)}" alt="">`
-        : `<span class="avatar">${escapeHtml(initials)}</span>`;
-      return `<li>${avatar}<p class="role">${escapeHtml(p.role)}</p><p class="name">${escapeHtml(p.name)}</p></li>`;
+      const picture = p.photo
+        ? `<img src="${escapeHtml(p.photo)}" alt="${escapeHtml(p.name)}" loading="lazy">`
+        : `<span class="initials" aria-hidden="true">${escapeHtml(initials)}</span>`;
+      return `<li data-reveal style="--d:${(i % 4) * 0.08}s"><div class="portrait">${picture}</div><p class="role">${escapeHtml(p.role)}</p><p class="name">${escapeHtml(p.name)}</p></li>`;
     })
     .join("");
 }
 
+// Sign-up links + footer year
 document.querySelectorAll("[data-signup]").forEach((a) => (a.href = signupUrl));
-document.getElementById("year").textContent = new Date().getFullYear();
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();
+
+// Mobile menu
+const nav = document.querySelector(".nav");
+const menuBtn = document.querySelector(".menu-btn");
+if (nav && menuBtn) {
+  menuBtn.addEventListener("click", () => {
+    const open = nav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", open);
+    menuBtn.textContent = open ? "Close" : "Menu";
+  });
+}
+
+// Fade sections in as they scroll into view
+const revealItems = document.querySelectorAll("[data-reveal]");
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in");
+          io.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+  revealItems.forEach((el) => io.observe(el));
+} else {
+  revealItems.forEach((el) => el.classList.add("in"));
+}
+
+// Soft spotlight that follows the cursor on tiles
+document.querySelectorAll(".tile").forEach((tile) => {
+  tile.addEventListener("pointermove", (ev) => {
+    const r = tile.getBoundingClientRect();
+    tile.style.setProperty("--mx", `${ev.clientX - r.left}px`);
+    tile.style.setProperty("--my", `${ev.clientY - r.top}px`);
+  });
+});

@@ -8,79 +8,90 @@
   <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Fira+Sans+Extra+Condensed:wght@600;800&family=IBM+Plex+Mono:wght@500&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=Fira+Sans+Extra+Condensed:wght@600;800&family=IBM+Plex+Mono:wght@500&family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="winter.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="wrap">
-      <a href="index.html"><img src="images/logo.png" alt="TMU Serbian Student Association" class="logo"></a>
-      <nav>
-        <a href="about.html" aria-current="page">About</a>
-        <a href="events.html">Events</a>
-        <a href="team.html">Team</a>
-        <a href="contact.html">Contact</a>
-      </nav>
-    </div>
+  <header class="nav">
+    <a href="index.html" class="brand"><img src="images/logo.png" alt="TMU Serbian Student Association"></a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    <nav class="nav-links" id="nav-links">
+      <a href="about.html" aria-current="page">About</a><a href="events.html">Events</a><a href="team.html">Team</a><a href="contact.html">Contact</a><a href="#" class="nav-cta" data-signup>Join</a>
+    </nav>
   </header>
-  <div class="kilim" aria-hidden="true"></div>
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track"><span lang="en">TMU Serbian Student Association</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="en">Follow @tmuserbs</span><i></i><span lang="en">TMU Serbian Student Association</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="en">Follow @tmuserbs</span><i></i><span lang="en">TMU Serbian Student Association</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="en">Follow @tmuserbs</span><i></i></div>
-  </div>
 
   <main>
-    <div class="wrap">
-      <p class="kicker">About <span>/ О нама</span></p>
-      <h1>Who we are</h1>
-      <p class="lead">The Serbian Student Association brings together TMU students who share an interest in Serbian culture, language, food and music.</p>
-      <p>We host socials, cultural nights and celebrations for holidays like Božić, Slava and Vidovdan. We also team up with other cultural clubs at TMU and around Toronto. You don't need to be Serbian to join. Everyone is welcome.</p>
+  <header class="page-head wrap">
+    <div class="glow" aria-hidden="true"></div>
+    <p class="eyebrow fade-in">About <span>/ О нама</span></p>
+    <h1 class="hero-title-sm"><span class="line"><span>Who we <em>are</em></span></span></h1>
+    <p class="lead fade-in">The Serbian Student Association brings together TMU students who share an interest in Serbian culture, language, food and music.</p>
+  </header>
 
-      <div class="points">
-        <div>
-          <h3>Culture</h3>
-          <p>Celebrate traditions, holidays and music together.</p>
-        </div>
-        <div>
-          <h3>Community</h3>
-          <p>Meet other students, from first years to grad students.</p>
-        </div>
-        <div>
-          <h3>Events</h3>
-          <p>Kolo nights, kafana nights, watch parties and more.</p>
-        </div>
-      </div>
+  <div class="band band-red flat" aria-hidden="true"><div class="band-track"><span lang="en">Kolo nights</span><i></i><span lang="sr">Коло</span><i></i><span lang="en">Kafana nights</span><i></i><span lang="sr">Кафана</span><i></i><span lang="en">Božić</span><i></i><span lang="en">Slava</span><i></i><span lang="en">Vidovdan</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Follow @tmuserbs</span><i></i><span lang="en">Serbian Student Association</span><i></i><span lang="en">Kolo nights</span><i></i><span lang="sr">Коло</span><i></i><span lang="en">Kafana nights</span><i></i><span lang="sr">Кафана</span><i></i><span lang="en">Božić</span><i></i><span lang="en">Slava</span><i></i><span lang="en">Vidovdan</span><i></i><span lang="en">Open to all TMU students</span><i></i><span lang="sr">Српско студентско удружење</span><i></i><span lang="en">Toronto Metropolitan University</span><i></i><span lang="en">Follow @tmuserbs</span><i></i><span lang="en">Serbian Student Association</span><i></i></div></div>
 
-      <div class="block" id="membership">
-        <p class="kicker">Membership <span>/ Чланство</span></p>
-        <h2>What being a member means</h2>
-        <ul class="perks">
-          <li>
-            <h3>Event updates</h3>
-            <p>You'll get info about upcoming events as soon as they're announced.</p>
-          </li>
-          <li>
-            <h3>Priority seating</h3>
-            <p>Members get priority for events with limited seating.</p>
-          </li>
-          <li>
-            <h3>Event discounts</h3>
-            <p>Members get discounted tickets for select events.</p>
-          </li>
-        </ul>
-        <a href="#" class="button" data-signup>Become a member</a>
+    <div class="page-body">
+      <div class="wrap">
+        <p class="big-text" data-reveal>We host socials, cultural nights and celebrations for holidays like <em>Božić</em>, <em>Slava</em> and <em>Vidovdan</em>. We team up with other cultural clubs at TMU and around Toronto. <span class="dim">You don't need to be Serbian to join. Everyone is welcome.</span></p>
+
+        <div class="pillars">
+          <div class="tile" data-reveal><span class="num">01</span><div><h3>Culture</h3><p>Celebrate traditions, holidays and music together.</p></div></div>
+          <div class="tile" data-reveal style="--d:.08s"><span class="num">02</span><div><h3>Community</h3><p>Meet other students, from first years to grad students.</p></div></div>
+          <div class="tile" data-reveal style="--d:.16s"><span class="num">03</span><div><h3>Events</h3><p>Kolo nights, kafana nights, watch parties and more.</p></div></div>
+        </div>
+
+      <section class="join-panel" id="membership" data-reveal>
+        <div>
+          <p class="eyebrow">Membership <span>/ Чланство</span></p>
+          <h2>Become a <em>member</em></h2>
+          <p class="lead">Sign up once and you're in for the year. Free, and open to every TMU student.</p>
+          <a href="#" class="button light" data-signup>Become a member</a>
+        </div>
+        <ol class="perk-list">
+          <li><h3>Event updates</h3><p>Hear about events as soon as they're announced.</p></li>
+          <li><h3>Priority seating</h3><p>First dibs on events with limited spots.</p></li>
+          <li><h3>Event discounts</h3><p>Discounted tickets for select events.</p></li>
+        </ol>
+      </section>
       </div>
     </div>
   </main>
 
-  <div class="kilim kilim-thin" aria-hidden="true"></div>
-  <div class="wordmark" aria-hidden="true">TMU SERBS</div>
-  <footer>
+  <footer class="footer">
     <div class="wrap">
-      <span>&copy; <span id="year"></span> TMU Serbian Student Association</span>
-      <span class="footer-links"><a href="https://instagram.com/tmuserbs" target="_blank" rel="noopener">Instagram</a><a href="https://discord.gg/zFcSjgYRs" target="_blank" rel="noopener">Discord</a></span>
+      <div class="footer-cta" data-reveal>
+        <div>
+          <p class="eyebrow">See you there <span>/ Видимо се</span></p>
+          <h2>Come to the <em>next one</em></h2>
+        </div>
+        <div class="buttons">
+          <a href="#" class="button" data-signup>Become a member</a>
+          <a href="https://instagram.com/tmuserbs" class="button ghost" target="_blank" rel="noopener">@tmuserbs</a>
+        </div>
+      </div>
+      <div class="footer-grid">
+        <div>
+          <h4>TMU Serbs</h4>
+          <p>The Serbian Student Association at Toronto Metropolitan University. Open to every TMU student.</p>
+        </div>
+        <div>
+          <h4>Pages</h4>
+          <ul><li><a href="about.html">About</a></li><li><a href="events.html">Events</a></li><li><a href="team.html">Team</a></li><li><a href="contact.html">Contact</a></li></ul>
+        </div>
+        <div>
+          <h4>Connect</h4>
+          <ul><li><a href="https://instagram.com/tmuserbs" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://discord.gg/zFcSjgYRs" target="_blank" rel="noopener">Discord</a></li><li><a href="mailto:tmuserbs@torontomu.ca">Email</a></li></ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year"></span> TMU Serbian Student Association</span>
+        <span>Toronto, Ontario</span>
+      </div>
     </div>
+    <div class="wordmark" aria-hidden="true">TMU SERBS</div>
   </footer>
 
   <script src="script.js"></script>
